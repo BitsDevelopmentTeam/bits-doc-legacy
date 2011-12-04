@@ -1,0 +1,45 @@
+
+--- Server/Demone ---
+* Comunica mediante socket (in VPN) con il programma sulla fonera. 
+   
+   Trasmette:
+   - Messaggi da mostrare a display e suoni (twitter, arrivo in sede di qualcuno)
+   - Comando apertura porta
+   - Comandi "speciali" (ex: scollegamento virtuale tastierino?)
+   
+   Riceve:
+   - Cambio stato sede
+   - Segnalazione presenza di qualcuno
+   - Dati periodici sulla temperatura
+   - Altre eventuali segnalazioni inviate al server mediante tastierino
+   
+   Protocollo fonera-server da inventarsi.
+   
+* Fa check su twitter per eventuali messaggi inviati e li inoltra alla fonera.   
+* Effettua storage dei dati in database MySQL accessibile anche da PHP.
+* Riceve richieste dal server web (via socket lanciati da PHP?):
+   - Messaggi da visualizzare / avvisi che sta arrivando qualcuno
+   - Cambio forzato stato mediante interfaccia admin
+* Gestisce un grosso numero di connessioni UDP (o TCP?) a cui invia in modo "PUSH"
+le notifiche sullo stato della sede (Effettua anche PING/PONG?). Non riceve/invia altri
+dati su questi socket
+
+
+--- Sito Web e Database ---
+* Visualizza a tutti lo stato della sede e la temperatura.
+* Visualizza a tutti lo storico dello stato e della temperatura.
+* Visualizza dietro login i messaggi e il relativo storico.
+* Visualizza dietro login le persone in sede (previa segnalazione)
+* Permette dietro login di inviare nuovi messaggi.
+* Permette dietro login di segnalare il proprio arrivo/presenza in sede.
+* Permette dietro login di inviare comandi alla fonera.
+
+--- Programma fonera ---
+* Comunica con demone sul server tramite VPN
+* Comunica con [Arduino|ATmega|stm32] tramite porta seriale, il quale a sua volta
+   - gestisce un LCD da 4x40 caratteri
+   - gestisce un sensore di temperatura
+   - gestisce un tastierino numerico
+   - gestisce un cicalino
+* Non si occupa della connessione alla mattina e disconnessione alla sera, in quanto
+si usa cron

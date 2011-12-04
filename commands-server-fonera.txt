@@ -1,0 +1,44 @@
+
+Tryin to do something consistent but simple and not over engineered.
+Commands are rpc-like: function name and eventual args, separated by spaces.
+One command per line, "\n" as line separator.
+Numeric argument are printed as-is, string arguments are encoded in base64.
+
+Commands that the fonera can send to the server
+===============================================
+
+temperature <int> <float>
+ Send a temperature sample. The first arg is the sensor number, the second
+ the temperature value.
+ Example "temperature 0 23.5\n"
+
+status <int>
+ Parameter 0 is sede chiusa, 1 is sede aperta.
+ Example "status 1\n"
+
+enter <int>
+ One person is added to the list of persone in sede.
+ The first parameter is the number inserted on the numeric keypad.
+ Example "enter 5\n"
+
+leave <int>
+ One person is removed from the list of persone in sede.
+ The first parameter is the number inserted on the numeric keypad.
+ Example "leave 5\n"
+
+Commands that the server can send to the fonera
+===============================================
+
+message <string>
+ A message is added to the list of messages shown on the display.
+ Example "message bG9sCg==\n"
+
+status <int>
+ Apre la sede inviando 1, chiude inviando 0
+ Example "status 1\n"
+
+sound <id>
+ Play a sound on the fonera.
+ The parameter is an index into a list of predefined
+ sounds. Sad trombone anyone?
+ Example "sound 0\n"
