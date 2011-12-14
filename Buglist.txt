@@ -1,0 +1,20 @@
+# Use the following template:
+# Component: [bitsd|bitsd_scripts|bits_daemon|bits_db|bits_presence|bits_web]
+# Issue: <short description>
+# <tab>Additional comments, all lines starting with a tab
+
+Component: bitsd
+Issue: Serial port open failure
+	When being launched by the boot scripts, bitsd can't open the serial port
+	whether being run as root or bits. When launched manually from within a
+	shell, it works (even if not root). When launched by cron I still have no
+	idea if it work, we'll see...
+
+Component: bits_daemon
+Issue: Doesn't accept fonera socket if connection closed uncleanly
+	If the fonera is rebooted without killing bitsd, no FIN packet is sent
+	to close the TCP connection between bitsd and bits_daemon. In this case
+	the daemon refuses to accept connection from the fonera again.
+	This has been temporarily fixed on the fonera side with the introduction
+	of the /etc/init.d/bitsd-kill script to kill bitsd upon reboot, but
+	ofcourse this does not work if power is removed, e.g: in case of a blackout

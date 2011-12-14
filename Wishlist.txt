@@ -1,0 +1,9 @@
+
+Feature planned for introduction
+
+- bits_events, an extension of bits_status that signals with a different
+  color the time periods in which there surely are people at the poul
+  (e.g: riunione poul)
+
+- urgent messages, possibility to tag a message as "urgent" and this will
+  cause a sound to be played when the message is received
