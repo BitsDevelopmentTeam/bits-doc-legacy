@@ -3,6 +3,16 @@
 # Issue: <short description>
 # <tab>Additional comments, all lines starting with a tab
 
+===============================================================================
+===================       Open bugs
+===============================================================================
+
+None!
+
+===============================================================================
+===================       Fixed bugs
+===============================================================================
+
 Component: bitsd
 Issue: Serial port open failure
 	When being launched by the boot scripts, bitsd can't open the serial port
