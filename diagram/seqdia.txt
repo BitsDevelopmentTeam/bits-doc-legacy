@@ -1,0 +1,25 @@
+title BITS SYSTEM
+
+BITS Client->InputProcessor: process(data)
+
+InputProcessor->InputProcessor: data.convert()
+InputProcessor->ConcreteFilterProcessor: process(data)
+ConcreteFilterProcessor->ConcreteFilterProcessor:filter(data)
+opt filter successfull
+ConcreteFilterProcessor->CacheProcessor: process(data)
+CacheProcessor->CacheProcessor: add_to_cache(data)
+CacheProcessor->Cache: get_instance()
+activate Cache
+Cache->CacheProcessor: instance
+CacheProcessor->Cache: get()
+Cache->CacheProcessor: cached
+CacheProcessor->CacheProcessor: data.merge(cache)
+CacheProcessor->Cache: add(data)
+deactivate Cache
+ConcreteFilterProcessor->PersistanceProcessor: process(data)
+PersistanceProcessor->PersistanceProcessor: persist(data)
+ConcreteFilterProcessor->WebSocketProcessor: process(data)
+WebSocketProcessor->WebSocketProcessor: data.convert()
+WebSocketProcessor->WebSocketProcessor: push(data)
+end
+
