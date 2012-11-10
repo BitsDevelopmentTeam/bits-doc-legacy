@@ -1,0 +1,75 @@
+feature                | bits 1.5 | bits 2.0 (done) | bits 2.0 (planned)
+-----------------------+----------+-----------------+-------------------
+stato sede realtime    |   X (1)  |      X          |         X
+stato sede storico     |   X      |      X          |         X
+previsione stato sede  |   X      |      X          |         X
+temperatura realtime   |   X      |      X (2)      |         X
+grafico temp.          |   X      |                 |         X
+temp.su display in sede|   X      |                 |         X
+ora e data su display  |          |                 |         X
+interfaccia utente sede|          |                 |         X
+inviare suoni/rickroll |   X (3)  |                 |         X
+push dati sito senza f5|          |      X          |         X
+area login sul sito    |          |                 |         X
+lista persone in sede  |          |                 |         X
+chat realtime          |          |                 |         X
+messaggi in sede       |          |                 |         X
+messaggi urgenti       |          |                 |         X
+stato sede "away" (11) |          |                 |         X
+aprire porta sede      |          |                 |         ? (4)
+-----------------------+----------+-----------------+-------------------
+protocollo sicuro      |   X (5)  |      X (6)      |         X
+protocollo estensibile |          |      X (7)      |         X
+socket fonera push     |          |      X          |         X
+login remoto fonera    |   X      |      X          |         X
+update remoto fonera   |   X (8)  |      X          |         X
+upd. rem. arduino/stm32|          |      X          |         X
+connessione con cron   |          |      X          |         X
+display figo           |          |      X          |         X
+tastiera in sede       |          |        (9)      |         X
+database               |     (10) |      X          |         X
+arch. 'data highway'   |          |      X          |         X
+demone permanente      |          |      X          |         X
+websocket              |          |      X          |         X
+twitter                |          |                 |         X
+
+(1)  ci metteva >60 sec perchè non bastava la RAM
+(2)  meno precisa a causa di un sensore non tarato
+(3)  limitatamente a dei beep, e senza web gui per inviarli
+(4)  c'erano opinioni contrastanti se implementarla o no
+(5)  autenticazione time-based made by bont
+(6)  socket bindato a un ip dentro la vpn dal lato demone
+(7)  anche se gattuso storce il naso a un protocollo line-based su raw
+     socket, è molto meglio del precedente che inizialmente era pensato
+     per far passare solo 0/1, ed è stato esteso alla temperatura con
+     un accrocchio
+(8)  bisognava pregare che qualche comando non facesse cadere la rete
+     come side effect, altrimenti rimanevi chiuso fuori
+(9)  non funziona? al momento è addirittura scollegata
+(10) il database erano delle funzioni php che scrivevano su un file txt
+(11) Estendere "status 0"=open e "status 1"=closed con "status 2"=away
+
+
+TODO list after meeting
+=======================
+
+HW:
+trovare altoparlanti slot sd e case (?)
+costruire circuito amplificatore (?)
+LM35 (mik)
+rimettere il tastierino (?)
+mettere il bits nel case (?)
+
+SW: stm32/fonera
+definire protocollo (fede)
+fare mockup ui (fede)
+aggiungere ora/data/temp su display (?)
+
+SW: Demone
+ambiente di test (Otacon22)
+restyling (Otacon22)
+
+SW: WEB
+fare bits.poul.org/test (gattuso?)
+grafico temperatura (gattuso!)
+area login che si connette al demone con socket (?)
