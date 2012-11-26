@@ -68,6 +68,7 @@ aggiungere ora/data/temp su display (?)
 SW: Demone
 ambiente di test (Otacon22)
 restyling (Otacon22)
+modificare conf nginx fare forwarding sulla porta 80 per websocket (Otacon22)
 
 SW: WEB
 fare bits.poul.org/test (gattuso?)
