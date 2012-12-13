@@ -3,6 +3,7 @@ feature                | bits 1.5 | bits 2.0 (done) | bits 2.0 (planned)
 stato sede realtime    |   X (1)  |      X          |         X
 stato sede storico     |   X      |      X          |         X
 previsione stato sede  |   X      |      X          |         X
+previsione color blind |          |      X          |         X
 temperatura realtime   |   X      |      X (2)      |         X
 grafico temp.          |   X      |                 |         X
 temp.su display in sede|   X      |                 |         X
