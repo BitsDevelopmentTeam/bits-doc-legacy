@@ -33,6 +33,7 @@ arch. 'data highway'   |          |      X          |         X
 demone permanente      |          |      X          |         X
 websocket              |          |      X          |         X
 twitter                |          |                 |         X
+detect persone 802.11  |          |                 |         X
 
 (1)  ci metteva >60 sec perchè non bastava la RAM
 (2)  meno precisa a causa di un sensore non tarato
